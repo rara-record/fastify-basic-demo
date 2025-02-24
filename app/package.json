@@ -7,11 +7,15 @@
     "start": "node --loader=extensionless dist/index.js"
   },
   "dependencies": {
-    "extensionless": "^1.9.9"
+    "extensionless": "^1.9.9",
+    "fastify": "^5.2.1"
   },
   "nodemonConfig": {
     "watch": "src",
-    "ignore": ["dist/**", "node_modules/**"],
+    "ignore": [
+      "dist/**",
+      "node_modules/**"
+    ],
     "ext": "ts",
     "exec": "rm -rf ./dist && yarn node ./esbuild.config.js && yarn node --loader=extensionless dist/index.js"
   },
