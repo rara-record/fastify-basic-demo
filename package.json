@@ -1,4 +1,8 @@
 {
-  "name": "fastify-basic",
-  "packageManager": "yarn@4.6.0"
+  "name": "boilerplate-demo",
+  "workspaces": ["app"],
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
 }
