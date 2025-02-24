@@ -8,9 +8,16 @@
   "dependencies": {
     "extensionless": "^1.9.9"
   },
+  "nodemonConfig": {
+    "watch": "src",
+    "ignore": ["dist/**", "node_modules/**"],
+    "ext": "ts",
+    "exec": "rm -rf ./dist && yarn node ./esbuild.config.js && yarn node --loader=extensionless dist/index.js"
+  },
   "devDependencies": {
     "@types/node": "^22.13.5",
     "esbuild": "^0.25.0",
+    "nodemon": "^3.1.9",
     "typescript": "^5.7.3"
   },
   "packageManager": "yarn@4.6.0"
