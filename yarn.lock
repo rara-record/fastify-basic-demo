@@ -102,6 +102,7 @@ __metadata:
   dependencies:
     "@types/node": "npm:^22.13.5"
     esbuild: "npm:^0.25.0"
+    extensionless: "npm:^1.9.9"
     glob: "npm:^11.0.1"
     typescript: "npm:^5.7.3"
   languageName: unknown
@@ -501,6 +502,13 @@ __metadata:
   bin:
     esbuild: bin/esbuild
   checksum: 10c0/5767b72da46da3cfec51661647ec850ddbf8a8d0662771139f10ef0692a8831396a0004b2be7966cecdb08264fb16bdc16290dcecd92396fac5f12d722fa013d
+  languageName: node
+  linkType: hard
+
+"extensionless@npm:^1.9.9":
+  version: 1.9.9
+  resolution: "extensionless@npm:1.9.9"
+  checksum: 10c0/ed5f6bc76496f0a49a95a5e3d00e613a500f96bc47e06b802b8f4c77ef42aa74f7c038ec92896886886e5cd75c69214d7dbcae6dda957abaec23d9d729f27b24
   languageName: node
   linkType: hard
 
