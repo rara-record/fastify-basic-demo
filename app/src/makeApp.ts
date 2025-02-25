@@ -13,6 +13,10 @@ export function makeApp() {
     dir: path.resolve("./dist/plugins"),
   });
 
+  app.get("/test", async () => ({
+    message: "테스트 메세지",
+  }));
+
   app.get("/healthz", async () => {
     return {
       ok: true,
