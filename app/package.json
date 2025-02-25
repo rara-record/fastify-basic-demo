@@ -9,7 +9,10 @@
   "nodemonConfig": {
     "exec": "rm -rf ./dist && yarn node ./esbuild.config.js && yarn node --loader=extensionless dist/index.js | yarn pino-pretty --singleLine",
     "ext": "ts",
-    "ignore": ["dist/**", "node_modules/**"],
+    "ignore": [
+      "dist/**",
+      "node_modules/**"
+    ],
     "watch": "src"
   },
   "dependencies": {

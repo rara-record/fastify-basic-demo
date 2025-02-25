@@ -2,18 +2,14 @@ FROM node:20-alpine
 
 WORKDIR /usr/src/app
 
-# 먼저 yarn 관련 파일들을 모두 복사
-COPY .yarn/ ./.yarn/
-COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases /usr/src/app/.yarn/releases
+COPY package.json yarn.lock .yarnrc.yml tsconfig.json /usr/src/app/
+COPY app/package.json /usr/src/app/app/package.json
 
-# workspace 패키지 정보 복사
-COPY app/package.json ./app/
-
-# 의존성 설치 (--immutable 대신 다른 옵션 사용)
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 # 소스코드 복사 및 빌드
-COPY app/ ./app/
+COPY app/ /usr/src/app/app/
 RUN yarn workspace @fastify-boilerplate-demo/app build
 
 # 환경변수 설정
