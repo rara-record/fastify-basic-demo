@@ -11,7 +11,8 @@
     "ext": "ts",
     "ignore": [
       "dist/**",
-      "node_modules/**"
+      "node_modules/**",
+      "src/web/**"
     ],
     "watch": "src"
   },
@@ -40,6 +41,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "esbuild": "^0.25.0",
+    "glob": "^11.0.1",
     "nodemon": "^3.1.9",
     "pino-pretty": "^13.0.0",
     "typescript": "^5.7.3",
