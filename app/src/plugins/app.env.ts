@@ -17,6 +17,9 @@ export default fp(
     app.register(fastifyEnv, {
       confKey: "env",
       schema,
+      data: {
+        ...process.env,
+      },
     });
   },
   {
