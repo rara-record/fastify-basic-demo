@@ -25,5 +25,6 @@ export default fp(
   },
   {
     name: "reactRouter",
+    dependencies: ["app.env", "app.gracefulShutdown"],
   }
 );
