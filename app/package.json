@@ -7,13 +7,9 @@
     "start": "node --loader=extensionless dist/index.js"
   },
   "nodemonConfig": {
-    "exec": "rm -rf ./dist && yarn node ./esbuild.config.js && yarn node --loader=extensionless dist/index.js | yarn pino-pretty --singleLine",
-    "ext": "ts",
-    "ignore": [
-      "dist/**",
-      "node_modules/**",
-      "src/web/**"
-    ],
+    "exec": "rimraf ./dist && yarn node ./esbuild.config.js && node --loader=extensionless ./dist/index.js | yarn pino-pretty --singleLine",
+    "ext": "ts, tsx",
+    "ignore": ["dist/**", "node_modules/**", "src/web/**"],
     "watch": "src"
   },
   "dependencies": {
@@ -44,6 +40,7 @@
     "glob": "^11.0.1",
     "nodemon": "^3.1.9",
     "pino-pretty": "^13.0.0",
+    "rimraf": "^6.0.1",
     "typescript": "^5.7.3",
     "vite": "^6.2.0"
   },
