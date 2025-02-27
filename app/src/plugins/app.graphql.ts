@@ -1,3 +1,5 @@
+import { context } from "esbuild";
+import type { FastifyInstance, FastifyRequest } from "fastify";
 import fp from "fastify-plugin";
 import { createSchema, createYoga } from "graphql-yoga";
 
@@ -8,11 +10,17 @@ export default fp(
         ping: String
       }
     `;
-    const schema = createSchema({
+
+    interface Context {
+      app: FastifyInstance;
+      req: FastifyRequest;
+    }
+
+    const schema = createSchema<Context>({
       typeDefs,
       resolvers: {
         Query: {
-          ping() {
+          ping(_, args, context) {
             return "pong";
           },
         },
@@ -20,7 +28,7 @@ export default fp(
     });
 
     // create ExecuteSchema
-    const yoga = createYoga({ schema });
+    const yoga = createYoga<Context>({ schema });
 
     // 실제 요청을 받아서 처리
     // https://fastify.dev/docs/latest/Reference/Routes/#routes
@@ -29,8 +37,11 @@ export default fp(
       url: yoga.graphqlEndpoint, // url 경로 설정
 
       async handler(req, reply) {
-        // context는 매 요청마다 만들어짐
-        const context = {};
+        // 매 요청마다 새로 생성되는 객체
+        const context: Context = {
+          app,
+          req,
+        };
 
         /**
          * 요청을 yoga에게 넘겨주고 응답을 받아서 처리 (fastify 요청이 들어오고, 중간에 yoga를 중간에 끼움)
