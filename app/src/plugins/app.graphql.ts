@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { useHive } from "@graphql-hive/envelop";
 import type { FastifyInstance, FastifyRequest } from "fastify";
 import fp from "fastify-plugin";
 import { createSchema, createYoga } from "graphql-yoga";
@@ -19,7 +20,18 @@ export default fp(
     });
 
     // create ExecuteSchema
-    const yoga = createYoga<Context>({ schema });
+    const yoga = createYoga<Context>({
+      schema,
+      plugins: [
+        useHive({
+          token: "728f979a0e010ec53cbe16cda3d7e2e4",
+          reporting: {
+            author: "bora",
+            commit: "1234",
+          },
+        }),
+      ],
+    });
 
     // 실제 요청을 받아서 처리
     // https://fastify.dev/docs/latest/Reference/Routes/#routes
