@@ -19,7 +19,7 @@ export default fp(
       resolvers,
     });
 
-    // create ExecuteSchema
+    // create ExecuteSchema (GraphQL 스키마와 실행 환경을 설정)
     const yoga = createYoga<Context>({
       schema,
       plugins: [
