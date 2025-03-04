@@ -1,3 +1,9 @@
-export default function Home() {
-  return <div>home 123456 </div>;
+export function loader() {
+  const headers = new Headers();
+  headers.set("Location", "/home");
+
+  return new Response(null, {
+    status: 302,
+    headers,
+  });
 }
