@@ -10,4 +10,5 @@ type Params = {
   "/": {};
   "/products": {};
   "/users": {};
+  "/home": {};
 };
