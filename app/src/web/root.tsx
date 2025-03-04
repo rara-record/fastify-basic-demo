@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+import { RelayEnvironmentProvider } from "react-relay";
 import {
   Links,
   Meta,
@@ -7,6 +9,7 @@ import {
   isRouteErrorResponse,
 } from "react-router";
 import type { Route } from "./+types/root";
+import { createRelayRenderEnvironment } from "./relay/createRelayRenderEnvironment";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +30,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const relayEnvironment = useMemo(() => createRelayRenderEnvironment(), []);
+
+  return (
+    <RelayEnvironmentProvider environment={relayEnvironment}>
+      <Outlet />
+    </RelayEnvironmentProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
